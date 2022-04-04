@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # 'shop.apps.ShopConfig',
     'ckeditor',
     'app',
-    'clear_cache',
 ]
 
 MIDDLEWARE = [
