@@ -1,12 +1,6 @@
-from calendar import c
-import email
-from functools import total_ordering
-from re import template
-from unicodedata import category
 from django.shortcuts import redirect, render,HttpResponse
 from django.shortcuts import render
 from django.views import View
-from numpy import product
 from .models import Customer,Product,Cart,OrderPlaced,Category,Wishlist
 from .forms import CustomerRegistrationForm,ProfileForm
 from django.contrib import messages
