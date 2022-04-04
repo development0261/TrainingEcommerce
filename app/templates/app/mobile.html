@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Mobile{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    <ul class="list-group">
+        <a class="list-group-item link-dark" href="{% url 'mobile' %}">All Mobile</a>
+        <a class="list-group-item link-dark" href="{% url 'mobiledata' 'OnePluse' %}">One Pluse</a>
+        <a class="list-group-item link-dark" href="{% url 'mobiledata' 'Samsung' %}">Samsung</a> 
+        <a class="list-group-item link-dark" href="{% url 'mobiledata' 'Iphone' %}">Iphone</a> 
+        <a class="list-group-item link-dark" href="{% url 'mobiledata' 'below' %}">Below &#8377 10000</a>
+        <a class="list-group-item link-dark" href="{% url 'mobiledata' 'above' %}">Above &#8377 10000</a>
+        <a class="list-group-item link-dark" href="{% url 'mobiledata' 'price' %}">Sort By Price</a>
+      </ul>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+   Mobile  List
+
+   {% for mb in mobiles %}
+   <div class="card mt-2 p-2" style="width: 18rem;">
+    <a href="{% url 'product-detail' mb.pid %}" class="link-dark text-decoration-none"> 
+    <img class="card-img-top" src="{{mb.product_image.url}}" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">{{mb.title}}</p>
+    </div>
+   </a>
+  </div>
+   
+{% endfor %}
+
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

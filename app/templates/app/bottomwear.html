@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Jeans{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    <ul class="list-group">
+        <a class="list-group-item link-dark" href="{% url 'jeans'%}">All Jeans</a>
+        {% comment %} <a class="list-group-item link-dark" href="{% url 'jeansdata' 'Spiker' %}">Spiker</a> {% endcomment %}
+        <a class="list-group-item link-dark" href="{% url 'jeansdata' 'levi' %}">Levi</a>
+        <a class="list-group-item link-dark" href="{% url 'jeansdata' 'above' %}">above &#8377 1000</a>
+        <a class="list-group-item link-dark" href="{% url 'jeansdata' 'below' %}">below &#8377 700</a>
+      </ul>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+   Jeans List
+
+  {% for j in Jeans %}
+   <div class="card mt-2 p-2" style="width: 18rem;">
+    <a href="{% url 'product-detail' j.pid %}" class="link-dark text-decoration-none"> 
+    <img class="card-img-top" src="{{j.product_image.url}}" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">{{s.title}}</p>
+    </div>
+   </a>
+  </div>
+   
+{% endfor %} 
+
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

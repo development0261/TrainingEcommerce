@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+ Products Page
+{% endblock title %}
+
+{% block content %}
+{% for product in Product  %}
+  <div class="container mt-3 mb-3" style="width: 25rem;">
+    <div class="card">
+        <div class="card-body">
+            <h6>{{product.product_name}}</h6>
+            <img src="{{ product.product_image.url}}" class="card-img-top"  height="250" width="250" >
+            <p>{{product.product_description|safe}}</p>
+            <b>Price : &#x20B9 {{product.product_price}}</b>
+        </div>
+        <button class="btn btn-warning btn-sm mb-1">Add To Cart</button>
+        <button class="btn btn-danger btn-sm mt-1">Buy Now</button>
+    </div>
+  </div>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+Category Page
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    {% for category in Category %}
+    <div class="card mt-2 mb-2" style="width: 18rem;">
+        <img src="{{category.category_image.url}}" class="card-img-top"  height="200" width="200" >
+        <div class="card-body">
+          <h5>{{category.category_name}}</h5>
+          <p>{{category.category_description|safe}}</p>
+          <a href="{% url 'product' %}" class="btn btn-primary btn-sm">Check Out</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

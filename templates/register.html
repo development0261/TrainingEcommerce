@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+ Register Page
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        {{form.media}}
+        {{form.as_p}}
+      <table>
+        <tr>
+            <td>First Name </td>
+            <td><input type="text" id="name" name="name" class="form-control-sm"/></td>
+            <td><span id="formname" class="text-danger"></span></td>
+         </tr>
+         <tr>
+            <td>Email </td>
+            <td><input type="text" id="email" name="email" class="form-control-sm"/></td>
+            <td><span id="formemail" class="text-danger"></span></td>
+         </tr>
+         <tr>
+            <td>Password</td>
+            <td><input type="text" id="password" name="password" class="form-control-sm"/></td>
+            <td><span id="formpassword" class="text-danger"></span></td>
+         </tr>
+         <tr>
+            <td>Phone</td>
+            <td><input type="text" id="phone" name="phone" class="form-control-sm"/></td>
+            <td><span id="formphone" class="text-danger"></span></td>
+         </tr>
+    
+         <tr>
+            <td><input type="submit" name="submit" class="btn btn-dark btn-sm mb-3"/></td>
+         </tr>
+      </table>
+    </form>
+</div>
+
+{% endblock content %}

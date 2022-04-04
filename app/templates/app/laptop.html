@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Laptop{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    <ul class="list-group">
+        <a class="list-group-item link-dark" href="{% url 'laptop'%}">All Laptops</a>
+        <a class="list-group-item link-dark" href="{% url 'laptopdata' 'Asus' %}">Asus</a>
+        <a class="list-group-item link-dark" href="{% url 'laptopdata' 'Acer' %}">Acer</a>
+        <a class="list-group-item link-dark" href="{% url 'laptopdata' 'above' %}">above &#8377 25000</a>
+        <a class="list-group-item link-dark" href="{% url 'laptopdata' 'below' %}">below &#8377 25000</a>
+        <a class="list-group-item link-dark" href="{% url 'laptopdata' 'sort' %}">Sort By Price</a>
+      </ul>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+    Laptop List
+
+  {% for l in Laptop %}
+   <div class="card mt-2 p-2" style="width: 18rem;">
+    <a href="{% url 'product-detail' l.pid %}" class="link-dark text-decoration-none"> 
+    <img class="card-img-top" src="{{l.product_image.url}}" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">{{l.title}}</p>
+    </div>
+   </a>
+  </div>
+   
+{% endfor %} 
+
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

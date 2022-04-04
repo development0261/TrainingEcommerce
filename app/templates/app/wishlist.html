@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Wishlist{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <h1 class="text-center mb-5">Whish list</h1>
+  <div class="col-sm-8">
+  <div class="card">
+   <div class="card-body">
+    <h3>Wishlist</h3>
+    {% for w in wishlist %}
+    <hr/>
+    <div class="row" id="removecart">
+     <div class="col-sm-3 text-center align-self-center"><img src="{{w.product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
+     <div class="col-sm-9">
+      <div>
+       <h5>{{w.product.title}}</h5>
+       <p class="mb-2 text-muted small">{{w.product.description}}</p>
+       
+       <div class="d-flex justify-content-between">
+        <a href="#" class="btn btn-sm btn-secondary mr-3 remove-cart" pid="{{w.product.pid}}">Remove From List </a>
+        <p class="mb-0"><span><strong>&#8377 {{w.product.discounted_price}}</strong></span></p>
+       </div>
+      </div>
+
+        <form action = "/add-to-cart" class="d-inline">
+         
+          {% if in_cart%}
+          <a href="{% url 'showcart' %}" class="btn btn-primary py-1 btn-sm  p-3 mt-3">Show Cart</a>
+          
+          {% comment %} {% else %}
+          <input type ="hidden" name="prod_id" value={{w.product.pid}} id="prod_id">
+          <button type="submit" class="btn btn-primary py-1 btn-sm  p-3 mt-3">Add to Cart</button> {% endcomment %}
+          {% endif %}
+         
+         
+        </form>
+     </div>
+    </div>
+    {% endfor %}
+    <hr class="text-muted">
+  <hr/>
+{% endblock main-content %}
